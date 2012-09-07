@@ -66,12 +66,14 @@ class NormalLikelihood(Likelihood):
   def scale(self):
     return self.sample.std
 
+## Maps probability distributions to their likelihoods
 likelihood_map = {
   uniform: UniformLikelihood,
   expon: ExponencialLikelihood,
   norm: NormalLikelihood
 }
 
+## Class for a Bayesian Classifier
 class Classifier:
   def __init__(self, dists):
     self.likelihoods = [
@@ -82,12 +84,14 @@ class Classifier:
     posteriors = array([ likely(x)*(1.0/3.0) for likely in self.likelihoods ])
     return posteriors.argmax()
 
+## Available distributions
 distributions = {
   'U': uniform,
   'E': expon,
   'N': norm
 }
 
+## Runs performance tests on possible classifiers
 for k1,dist1 in distributions.iteritems():
   for k2,dist2 in distributions.iteritems():
     for k3,dist3 in distributions.iteritems():
