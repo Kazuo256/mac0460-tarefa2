@@ -29,6 +29,7 @@ for data in samples:
 ## Class to hold samples' relevant information
 class SampleInfo:
   def __init__ (self, data):
+    self.data = data
     self.min = data.min()
     self.max = data.max()
     self.mean = data.mean()
@@ -42,8 +43,15 @@ class Likelihood:
   def __init__(self, dist, sample):
     self.dist = dist
     self.sample = sample
+    mles = dist.fit(sample.data)
+    self.__local = mles[0]
+    self.__scale = mles[1]
   def __call__(self, x):
-    return self.dist.pdf(x, self.local(), self.scale())
+    return self.dist.pdf(x, loc=self.local(), scale=self.scale())
+  def local(self):
+    return self.__local
+  def scale(self):
+    return self.__scale
 
 ## Uniform distribution likelihood class
 class UniformLikelihood(Likelihood):
@@ -67,10 +75,16 @@ class NormalLikelihood(Likelihood):
     return self.sample.std
 
 ## Maps probability distributions to their likelihoods
+## Change mapping to use ScyPy's estimation instead.
 likelihood_map = {
-  uniform: UniformLikelihood,
-  expon: ExponencialLikelihood,
-  norm: NormalLikelihood
+  ## These ones directly calculate the estimators
+  uniform:  UniformLikelihood,
+  expon:    ExponencialLikelihood,
+  norm:     NormalLikelihood
+  ## These ones use ScyPy's estimation
+  #uniform:  Likelihood,
+  #expon:    Likelihood,
+  #norm:     Likelihood
 }
 
 ## Class for a Bayesian Classifier
