@@ -110,7 +110,7 @@ distributions = {
 
 ## Evaluates a classifiers' performance with the test set data.
 def performance(classify):
-  print 'Classificador %s:\n' % classify
+  print 'Classificador %s:' % classify
   print '\tDado:\t\tClasse Real:\tClasse escolhida:'
   hits = 0
   for x in tests:
@@ -118,7 +118,7 @@ def performance(classify):
     print '\t%f\t%d\t\t%d' % (x[0], x[1], chosen_class)
     if chosen_class == x[1]:
       hits += 1
-  print ''
+  print 'Total de acertos: %d\n' % hits
   return classify, hits
 
 ## Stores the results of the performance tests

@@ -16,11 +16,13 @@ junto com esse trabalho.
 II. Teste de desempenho dos classificadores
 
 
-  Segue uma tabela resumindo o resultado do teste de eficiência usado nos
+  Segue uma tabela resumindo o resultado do teste de eficiência dos
 classificadores. Para informações mais precisas, é só analisar a saída do
 programa "tarefa2.py".
-  Aqui, cada classificador é identificado pelas distribuições que assume
-para cada classe, em ordem.
+  Cada classificador é identificado pelas distribuições que assume para cada
+classe, em ordem. Por exemplo, (U,U,N) é o classificador que assume que as
+distribuições das Classes 1, 2 e 3 são Uniforme, Uniforme e Normal,
+respectivamente.
 
   Legenda:
 
@@ -65,8 +67,8 @@ para cada classe, em ordem.
 III. Melhor classificador
 
 
-  Com base nos resultados observados, os melhores classificadores são (E,U,N) -
-como era de se esperar - e (E,N,N) - que é relativamente parecido. Ambos foram
+  Com base nos resultados observados, os melhores classificadores foram (E,U,N)
+- como era de se esperar - e (E,N,N) - que é relativamente parecido. Ambos foram
 os que mais acertaram ao classificar os dados do conjunto de testes. Seguem as
 matrizes de confusão desses dois classificadores:
 
