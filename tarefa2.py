@@ -109,20 +109,26 @@ distributions = {
 }
 
 ## Evaluates a classifiers' performance with the test set data.
+## This is the part where I got lazy.
 def performance(classify):
   print 'Classificador %s:' % classify
   print '\tDado:\t\tClasse Real:\tClasse escolhida:'
   hits = 0
+  classes = [[0,0],[0,0],[0,0]]
   for x in tests:
     chosen_class = classify(x[0])
-    print '\t%f\t%d\t\t%d' % (x[0], x[1], chosen_class)
+    classes[chosen_class][0] += 1
+    print '\t%f\t%d\t\t%d' % (x[0], x[1]+1, chosen_class+1)
     if chosen_class == x[1]:
       hits += 1
+      classes[chosen_class][1] += 1
+  for i,count in enumerate(classes):
+    print 'Classificados como Classe %d: %d (%d corretos)' % \
+          (i+1, count[0], count[1])
   print 'Total de acertos: %d\n' % hits
   return classify, hits
 
 ## Stores the results of the performance tests
-## This is the part where I got lazy.
 performance_tests = [
   performance(Classifier(('(%s,%s,%s)'%(k1,k2,k3)),[dist1, dist2, dist3]))
   for k1,dist1 in distributions.iteritems()

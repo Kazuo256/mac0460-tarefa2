@@ -22,7 +22,13 @@ programa "tarefa2.py".
   Cada classificador é identificado pelas distribuições que assume para cada
 classe, em ordem. Por exemplo, (U,U,N) é o classificador que assume que as
 distribuições das Classes 1, 2 e 3 são Uniforme, Uniforme e Normal,
-respectivamente.
+respectivamente. 
+  Nas colunas das classes, o primeiro número é o número de vezes que o
+classificador daquela linha classificou alguém como sendo daquela classe, e o
+segundo número é o número de vezes que essa classificação foi de fato correta.
+Assim, por exemplo, se temos "25 (16)" na coluna da "Classe 1" de um certo
+classificador, significa que ele classificou 25 elementos do conjunto de teste
+como sendo da classe 1, mas apenas 16 deles eram de fato da classe 1.
 
   Legenda:
 
@@ -31,37 +37,37 @@ respectivamente.
     N: Distribuição normal
 
 
-      +----------------+----------+
-      | Classificador: | Acertos: |
-      +----------------+----------+
-      |     E, E, E    |    45    |
-      |     E, E, U    |    46    |
-      |     E, E, N    |    41    |
-      |     E, U, E    |    45    |
-      |     E, U, U    |    49    |
-      |     E, U, N    |    50    |
-      |     E, N, E    |    44    |
-      |     E, N, U    |    47    |
-      |     E, N, N    |    50    |
-      |     U, E, E    |    17    |
-      |     U, E, U    |    20    |
-      |     U, E, N    |    18    |
-      |     U, U, E    |    35    |
-      |     U, U, U    |    49    |
-      |     U, U, N    |    47    |
-      |     U, N, E    |    35    |
-      |     U, N, U    |    45    |
-      |     U, N, N    |    47    |
-      |     N, E, E    |     9    |
-      |     N, E, U    |    20    |
-      |     N, E, N    |    18    |
-      |     N, U, E    |    27    |
-      |     N, U, U    |    49    |
-      |     N, U, N    |    49    |
-      |     N, N, E    |    27    |
-      |     N, N, U    |    47    |
-      |     N, N, N    |    49    |
-      +----------------+----------+
+      +---------------+----------+----------+----------+------------------+
+      | Classificador | Classe 1 | Classe 2 | Classe 3 | Total de acertos |
+      +---------------+----------+----------+----------+------------------+
+      |  E,E,E        |  25 (16) |  24 (20) |  11 ( 9) |        45        |
+      |  E,E,U        |  11 (11) |  21 (17) |  28 (18) |        46        |
+      |  E,E,N        |  14 (13) |  14 (11) |  32 (17) |        41        |
+      |  E,U,E        |  25 (16) |  24 (20) |  11 ( 9) |        45        |
+      |  E,U,U        |  11 (11) |  24 (20) |  25 (18) |        49        |
+      |  E,U,N        |  14 (13) |  24 (20) |  22 (17) |        50        |
+      |  E,N,E        |  25 (16) |  25 (20) |  10 ( 8) |        44        |
+      |  E,N,U        |  11 (11) |  22 (18) |  27 (18) |        47        |
+      |  E,N,N        |  14 (13) |  24 (20) |  22 (17) |        50        |
+      |  U,E,E        |  31 ( 4) |   0 ( 0) |  29 (13) |        17        |
+      |  U,E,U        |  21 ( 2) |  11 ( 0) |  28 (18) |        20        |
+      |  U,E,N        |  19 ( 1) |  13 ( 0) |  28 (17) |        18        |
+      |  U,U,E        |   7 ( 2) |  24 (20) |  29 (13) |        35        |
+      |  U,U,U        |  11 (11) |  24 (20) |  25 (18) |        49        |
+      |  U,U,N        |  11 (10) |  24 (20) |  25 (17) |        47        |
+      |  U,N,E        |   6 ( 2) |  25 (20) |  29 (13) |        35        |
+      |  U,N,U        |   9 ( 9) |  24 (18) |  27 (18) |        45        |
+      |  U,N,N        |  11 (10) |  24 (20) |  25 (17) |        47        |
+      |  N,E,E        |  43 ( 6) |   0 ( 0) |  17 ( 3) |         9        |
+      |  N,E,U        |  21 ( 2) |  11 ( 0) |  28 (18) |        20        |
+      |  N,E,N        |  19 ( 1) |  13 ( 0) |  28 (17) |        18        |
+      |  N,U,E        |  19 ( 4) |  24 (20) |  17 ( 3) |        27        |
+      |  N,U,U        |  11 (11) |  24 (20) |  25 (18) |        49        |
+      |  N,U,N        |  13 (12) |  24 (20) |  23 (17) |        49        |
+      |  N,N,E        |  19 ( 4) |  24 (20) |  17 ( 3) |        27        |
+      |  N,N,U        |  11 (11) |  22 (18) |  27 (18) |        47        |
+      |  N,N,N        |  13 (12) |  24 (20) |  23 (17) |        49        |
+      +---------------+----------+----------+----------+------------------+
 
 
 III. Melhor classificador
@@ -69,8 +75,8 @@ III. Melhor classificador
 
   Com base nos resultados observados, os melhores classificadores foram (E,U,N)
 - como era de se esperar - e (E,N,N) - que é relativamente parecido. Ambos foram
-os que mais acertaram ao classificar os dados do conjunto de testes. Seguem as
-matrizes de confusão desses dois classificadores:
+os que mais acertaram ao classificar os dados do conjunto de testes (50 acertos).
+Seguem as matrizes de confusão desses dois classificadores:
 
 
     +--------------------+--------------------------------+

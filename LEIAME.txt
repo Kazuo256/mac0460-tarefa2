@@ -17,11 +17,13 @@ OBSERVAÇÕES:
 
   ->  Para executar o programa, basta digitar no terminal
 
-        $ python tarefa2.py
+        $ python tarefa2.py > output
 
       A partir da mesma pasta que esse LEIAME. O programa procurará pelos
-      arquivos "sample" e "test" para realizar suas operações.
-      Em particular, se você quiser mudar os conjuntos de treinamento e de
-      teste, basta substituir os arquivos "sample" e "test" por outros
-      devidamente gerados pelo script "gerador.py" fornecido no PACA.
+      arquivos "sample" e "test" para realizar suas operações. O "output" é
+      recomendado porque a saída do script expõe as informações detalhadas de
+      cada teste, o que resulta em algo bastante volumoso.
+      Se você quiser mudar os conjuntos de treinamento e de teste, basta
+      substituir os arquivos "sample" e "test" por outros devidamente gerados
+      pelo script "gerador.py" fornecido no PACA.
 
