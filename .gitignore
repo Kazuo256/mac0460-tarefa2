@@ -2,3 +2,8 @@
 *~
 success*
 remake_learning.sh
+*.dvi
+*.pdf
+
+out*
+*.tar.gz
