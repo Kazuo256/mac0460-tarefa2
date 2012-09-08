@@ -112,13 +112,13 @@ distributions = {
 ## This is the part where I got lazy.
 def performance(classify):
   print 'Classificador %s:' % classify
-  print '\tDado:\t\tClasse Real:\tClasse escolhida:'
+  print '  Classe Real:  Classe escolhida: Dado observado:'
   hits = 0
   classes = [[0,0],[0,0],[0,0]]
   for x in tests:
     chosen_class = classify(x[0])
     classes[chosen_class][0] += 1
-    print '\t%f\t%d\t\t%d' % (x[0], x[1]+1, chosen_class+1)
+    print '       %-7d          %-9d    %f' % (x[1]+1, chosen_class+1, x[0])
     if chosen_class == x[1]:
       hits += 1
       classes[chosen_class][1] += 1
