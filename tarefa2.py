@@ -105,15 +105,42 @@ distributions = {
   'N': norm
 }
 
+def performance(classify):
+  hits = 0
+  for x in tests:
+    if classify(x[0]) == x[1]:
+      hits += 1
+  return hits
+
+performance_tests = [
+  [ k1, k2, k3, performance(Classifier([dist1, dist2, dist3])) ]
+  for k1,dist1 in distributions.iteritems()
+  for k2,dist2 in distributions.iteritems()
+  for k3,dist3 in distributions.iteritems()
+]
+
+best = []
+last_max = 0
+for i,test in enumerate(performance_tests):
+  print ('Classificador %2d (%s, %s, %s):' % (i, test[0], test[1], test[2])), test[3]
+  if test[3] > last_max:
+    best = [i]
+    last_max = test[3]
+  elif test[3] == last_max:
+    best.append(i)
+
+print(best)
+
+
 ## Runs performance tests on possible classifiers
-for k1,dist1 in distributions.iteritems():
-  for k2,dist2 in distributions.iteritems():
-    for k3,dist3 in distributions.iteritems():
-      classify = Classifier([dist1, dist2, dist3])
-      hits = 0
-      for x in tests:
-        if classify(x[0]) == x[1]:
-          hits += 1
-      print(k1, k2, k3, hits)
+#for k1,dist1 in distributions.iteritems():
+#  for k2,dist2 in distributions.iteritems():
+#    for k3,dist3 in distributions.iteritems():
+#      classify = Classifier([dist1, dist2, dist3])
+#      hits = 0
+#      for x in tests:
+#        if classify(x[0]) == x[1]:
+#          hits += 1
+#      print(k1, k2, k3, hits)
 
 
