@@ -89,7 +89,8 @@ likelihood_map = {
 
 ## Class for a Bayesian Classifier
 class Classifier:
-  def __init__(self, dists):
+  def __init__(self, name, dists):
+    self.name = name
     self.likelihoods = [
       likelihood_map[dist] (dist, class_samples[i]) for i,dist in enumerate(dists)
     ]
@@ -97,6 +98,8 @@ class Classifier:
     ## reminder: P(class) = 1/3 always
     posteriors = array([ likely(x)*(1.0/3.0) for likely in self.likelihoods ])
     return posteriors.argmax()
+  def __str__(self):
+    return self.name
 
 ## Available distributions
 distributions = {
@@ -105,42 +108,43 @@ distributions = {
   'N': norm
 }
 
+## Evaluates a classifiers' performance with the test set data.
 def performance(classify):
+  print 'Classificador %s:\n' % classify
+  print '\tDado:\t\tClasse Real:\tClasse escolhida:'
   hits = 0
   for x in tests:
-    if classify(x[0]) == x[1]:
+    chosen_class = classify(x[0])
+    print '\t%f\t%d\t\t%d' % (x[0], x[1], chosen_class)
+    if chosen_class == x[1]:
       hits += 1
-  return hits
+  print ''
+  return classify, hits
 
+## Stores the results of the performance tests
+## This is the part where I got lazy.
 performance_tests = [
-  [ k1, k2, k3, performance(Classifier([dist1, dist2, dist3])) ]
+  performance(Classifier(('(%s,%s,%s)'%(k1,k2,k3)),[dist1, dist2, dist3]))
   for k1,dist1 in distributions.iteritems()
   for k2,dist2 in distributions.iteritems()
   for k3,dist3 in distributions.iteritems()
 ]
 
+## Finds out the best classifiers
 best = []
 last_max = 0
-for i,test in enumerate(performance_tests):
-  print ('Classificador %2d (%s, %s, %s):' % (i, test[0], test[1], test[2])), test[3]
-  if test[3] > last_max:
-    best = [i]
-    last_max = test[3]
-  elif test[3] == last_max:
-    best.append(i)
+for test in performance_tests:
+  ## test[0] -- the classifier itself
+  ## test[1] -- classifier's performance
+  if test[1] > last_max:
+    best = [test[0]]
+    last_max = test[1]
+  elif test[1] == last_max:
+    best.append(test[0])
 
-print(best)
-
-
-## Runs performance tests on possible classifiers
-#for k1,dist1 in distributions.iteritems():
-#  for k2,dist2 in distributions.iteritems():
-#    for k3,dist3 in distributions.iteritems():
-#      classify = Classifier([dist1, dist2, dist3])
-#      hits = 0
-#      for x in tests:
-#        if classify(x[0]) == x[1]:
-#          hits += 1
-#      print(k1, k2, k3, hits)
-
+## Display best classifiers
+print 'Melhores classificadores:\n'
+for classifier in best:
+  print '\tClassificador %s' % classifier
+print ''
 

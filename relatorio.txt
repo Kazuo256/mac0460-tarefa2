@@ -1,0 +1,102 @@
+
+Wilson Kazuo Mizutani (nº usp: 6797230)
+
+      MAC0460 - 2º semestre de 2012
+          Relatório da Tarefa 2
+
+
+I. Dados usados
+
+
+  O programa foi executado tendo como amostra de treinamento os dados no arquivo
+"sample" e como conjunto de testes os dados no arquivo "test", ambos entregues
+junto com esse trabalho.
+
+
+II. Teste de desempenho dos classificadores
+
+
+  Segue uma tabela resumindo o resultado do teste de eficiência usado nos
+classificadores. Para informações mais precisas, é só analisar a saída do
+programa "tarefa2.py".
+  Aqui, cada classificador é identificado pelas distribuições que assume
+para cada classe, em ordem.
+
+  Legenda:
+
+    E: Distribuição exponencial
+    U: Distribuição uniforme
+    N: Distribuição normal
+
+
+      +----------------+----------+
+      | Classificador: | Acertos: |
+      +----------------+----------+
+      |     E, E, E    |    45    |
+      |     E, E, U    |    46    |
+      |     E, E, N    |    41    |
+      |     E, U, E    |    45    |
+      |     E, U, U    |    49    |
+      |     E, U, N    |    50    |
+      |     E, N, E    |    44    |
+      |     E, N, U    |    47    |
+      |     E, N, N    |    50    |
+      |     U, E, E    |    17    |
+      |     U, E, U    |    20    |
+      |     U, E, N    |    18    |
+      |     U, U, E    |    35    |
+      |     U, U, U    |    49    |
+      |     U, U, N    |    47    |
+      |     U, N, E    |    35    |
+      |     U, N, U    |    45    |
+      |     U, N, N    |    47    |
+      |     N, E, E    |     9    |
+      |     N, E, U    |    20    |
+      |     N, E, N    |    18    |
+      |     N, U, E    |    27    |
+      |     N, U, U    |    49    |
+      |     N, U, N    |    49    |
+      |     N, N, E    |    27    |
+      |     N, N, U    |    47    |
+      |     N, N, N    |    49    |
+      +----------------+----------+
+
+
+III. Melhor classificador
+
+
+  Com base nos resultados observados, os melhores classificadores são (E,U,N) -
+como era de se esperar - e (E,N,N) - que é relativamente parecido. Ambos foram
+os que mais acertaram ao classificar os dados do conjunto de testes. Seguem as
+matrizes de confusão desses dois classificadores:
+
+
+    +--------------------+--------------------------------+
+    | Matriz de Confusão |   Respostas do Classificador   |
+    |  do Classificador  +----------+----------+----------+
+    |      (E,U,N)       | Classe 1 | Classe 2 | Classe 3 |
+    +---------+----------+----------+----------+----------+
+    |         | Classe 1 |    13    |     2    |     5    |
+    | Classes +----------+----------+----------+----------+
+    |         | Classe 2 |     0    |    20    |     0    |
+    |  Reais  +----------+----------+----------+----------+
+    |         | Classe 3 |     1    |     2    |    17    |
+    +---------+----------+----------+----------+----------+
+
+    +--------------------+--------------------------------+
+    | Matriz de Confusão |   Respostas do Classificador   |
+    |  do Classificador  +----------+----------+----------+
+    |      (E,N,N)       | Classe 1 | Classe 2 | Classe 3 |
+    +---------+----------+----------+----------+----------+
+    |         | Classe 1 |    13    |     2    |     5    |
+    | Classes +----------+----------+----------+----------+
+    |         | Classe 2 |     0    |    20    |     0    |
+    |  Reais  +----------+----------+----------+----------+
+    |         | Classe 3 |     1    |     2    |    17    |
+    +---------+----------+----------+----------+----------+
+
+
+  Sim, as duas matrizes de confusão ficaram iguais. Na verdade, ambos
+classificaram o conjunto de teste exatamente da mesma maneira, como pode ser
+constatado na saída do programa.
+
