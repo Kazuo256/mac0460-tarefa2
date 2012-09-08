@@ -1,0 +1,25 @@
+
+Wilson Kazuo Mizutani (nº usp: 6797230)
+
+      MAC0460 - 2º semestre de 2012
+                Tarefa 2
+
+OBSERVAÇÕES:
+
+  ->  A implementação da tarefa se encontra no arquivo "tarefa2.py".
+  
+  ->  O relatório está no arquivo "relatorio.txt".
+  
+  ->  Os arquivos "sample" e "test" são os conjuntos de treinamento e de teste,
+      respectivamente.
+
+  ->  Para executar o programa, basta digitar no terminal
+
+        $ python tarefa2.py
+
+      A partir da mesma pasta que esse LEIAME. O programa procurará pelos
+      arquivos "sample" e "test" para realizar suas operações.
+      Em particular, se você quiser mudar os conjuntos de treinamento e de
+      teste, basta substituir os arquivos "sample" e "test" por outros
+      devidamente gerados pelo script "gerador.py" fornecido no PACA.
+
