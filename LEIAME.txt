@@ -8,7 +8,7 @@ OBSERVAÇÕES:
 
   ->  A implementação da tarefa se encontra no arquivo "tarefa2.py".
   
-  ->  O relatório está no arquivo "relatorio.txt".
+  ->  O relatório está no arquivo "relatorio.pdf".
   
   ->  Os arquivos "sample" e "test" são os conjuntos de treinamento e de teste,
       respectivamente.

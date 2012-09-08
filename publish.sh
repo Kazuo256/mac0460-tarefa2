@@ -6,7 +6,7 @@ if [ ! -d $outdir ]; then
   mkdir $outdir
 fi
 
-contents="tarefa2.py relatorio.txt LEIAME.txt sample test"
+contents="tarefa2.py relatorio.pdf LEIAME.txt sample test"
 cp -r $contents $outdir
 
 tar -caf $outdir.tar.gz $outdir
