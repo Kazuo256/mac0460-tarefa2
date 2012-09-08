@@ -13,6 +13,8 @@ OBSERVAÇÕES:
   ->  Os arquivos "sample" e "test" são os conjuntos de treinamento e de teste,
       respectivamente.
 
+  -> O script "tarefa2.py" usa os pacotes SciPy e Numpy.
+
   ->  Para executar o programa, basta digitar no terminal
 
         $ python tarefa2.py
